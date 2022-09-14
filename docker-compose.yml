@@ -77,6 +77,11 @@ services:
       retries: 10
 
   reverse-proxy:
+    depends_on:
+      wordpress1:
+        condition: service_healthy
+      wordpress2:
+        condition: service_healthy
     image: nginx:latest
     ports:
       - "80:80"
