@@ -44,6 +44,10 @@ services:
       WORDPRESS_DB_PASSWORD: wordpresspassword
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_TABLE_PREFIX: wp1_
+    volumes:
+      - type: bind
+        source: ./public
+        target: /var/www/html
   wordpress2:
     depends_on:
       db:
