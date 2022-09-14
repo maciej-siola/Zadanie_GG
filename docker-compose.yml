@@ -111,3 +111,5 @@ services:
       WORDPRESS_DB_USER: wordpressuser
       WORDPRESS_DB_PASSWORD: wordpresspassword
       WORDPRESS_TABLE_PREFIX: wp2_
+volumes:
+  wp2:
