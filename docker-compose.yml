@@ -66,4 +66,6 @@ services:
       - type: volume
         source: wp2
         target: /var/www/html
+  reverse-proxy:
+    image: nginx:latest
 
