@@ -15,6 +15,21 @@ services:
     ports:
       - 3306:3306
       - 33060:33060
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-P",
+          "3306"
+        ]
+      interval: 30s
+      timeout: 3s
+      retries: 10
+
   wordpress1:
     image: wordpress:latest
     environment:
