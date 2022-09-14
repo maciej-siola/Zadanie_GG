@@ -105,6 +105,8 @@ services:
       - type: bind
         source: ./public
         target: /var/www/html
+    user: "33"
+    command: /bin/bash -c 'sleep 15; wp core install --path="/var/www/html" --url="http://strona1.com" --title=Strona1 --admin_user=user --admin_password=password --admin_email=admin@strona1.com --skip-email; sleep infinity'
   wordpress2-cli:
     depends_on:
       wordpress2:
@@ -119,5 +121,7 @@ services:
       - type: volume
         source: wp2
         target: /var/www/html
+    user: "33"
+    command: /bin/bash -c 'sleep 15; wp core install --path="/var/www/html" --url="http://strona2.com" --title=Strona2 --admin_user=user --admin_password=password --admin_email=admin@strona2.com --skip-email; sleep infinity'
 volumes:
   wp2:
