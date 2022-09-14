@@ -62,4 +62,8 @@ services:
       WORDPRESS_DB_PASSWORD: wordpresspassword
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_TABLE_PREFIX: wp2_
+    volumes:
+      - type: volume
+        source: wp2
+        target: /var/www/html
 
