@@ -92,6 +92,12 @@ services:
         target: /etc/nginx/conf.d/proxy.conf
 
   wordpress1-cli:
+    depends_on:
+      wordpress1:
+        condition: service_healthy
     image: wordpress:cli
   wordpress2-cli:
+    depends_on:
+      wordpress2:
+        condition: service_healthy
     image: wordpress:cli
