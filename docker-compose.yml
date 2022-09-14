@@ -91,3 +91,7 @@ services:
         source: proxy.conf
         target: /etc/nginx/conf.d/proxy.conf
 
+  wordpress1-cli:
+    image: wordpress:cli
+  wordpress2-cli:
+    image: wordpress:cli
