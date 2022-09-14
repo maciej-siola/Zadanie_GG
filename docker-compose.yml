@@ -17,4 +17,6 @@ services:
       - 33060:33060
   wordpress1:
     image: wordpress:latest
+  wordpress2:
+    image: wordpress:latest
 
