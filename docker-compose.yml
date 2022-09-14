@@ -96,8 +96,18 @@ services:
       wordpress1:
         condition: service_healthy
     image: wordpress:cli
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpressuser
+      WORDPRESS_DB_PASSWORD: wordpresspassword
+      WORDPRESS_TABLE_PREFIX: wp1_
   wordpress2-cli:
     depends_on:
       wordpress2:
         condition: service_healthy
     image: wordpress:cli
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpressuser
+      WORDPRESS_DB_PASSWORD: wordpresspassword
+      WORDPRESS_TABLE_PREFIX: wp2_
