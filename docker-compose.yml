@@ -2,6 +2,7 @@ version: "3.8"
 services:
   db:
     image: mysql:latest
+    container_name: ms-db
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
@@ -31,6 +32,7 @@ services:
       retries: 10
 
   wordpress1:
+    container_name: ms-wordpress1
     depends_on:
       db:
         condition: service_healthy
@@ -54,6 +56,7 @@ services:
       retries: 10
 
   wordpress2:
+    container_name: ms-wordpress2
     depends_on:
       db:
         condition: service_healthy
@@ -77,6 +80,7 @@ services:
       retries: 10
 
   reverse-proxy:
+    container_name: ms-reverse-proxy
     depends_on:
       wordpress1:
         condition: service_healthy
@@ -92,6 +96,7 @@ services:
         target: /etc/nginx/conf.d/proxy.conf
 
   wordpress1-cli:
+    container_name: ms-wordpress1-cli
     depends_on:
       wordpress1:
         condition: service_healthy
@@ -111,6 +116,7 @@ services:
     user: "33"
     command: /bin/bash -c 'sleep 15; wp core install --path="/var/www/html" --url="http://strona1.com" --title=Strona1 --admin_user=user --admin_password=password --admin_email=admin@strona1.com --skip-email; sleep infinity'
   wordpress2-cli:
+    container_name: ms-wordpress2-cli
     depends_on:
       wordpress2:
         condition: service_healthy
@@ -129,6 +135,7 @@ services:
         target: /tmp
     user: "33"
     command: /bin/bash -c 'sleep 15; wp core install --path="/var/www/html" --url="http://strona2.com" --title=Strona2 --admin_user=user --admin_password=password --admin_email=admin@strona2.com --skip-email; sleep infinity'
+
 volumes:
   wp2:
   shared:
