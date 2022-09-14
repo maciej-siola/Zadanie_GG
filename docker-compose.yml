@@ -35,6 +35,7 @@ services:
       db:
         condition: service_healthy
     image: wordpress:latest
+    restart: always
     environment:
       WP_POST_REVISIONS: 9
       DISALLOW_FILE_EDIT: true
@@ -48,6 +49,7 @@ services:
       db:
         condition: service_healthy
     image: wordpress:latest
+    restart: always
     environment:
       WP_POST_REVISIONS: 9
       DISALLOW_FILE_EDIT: true
