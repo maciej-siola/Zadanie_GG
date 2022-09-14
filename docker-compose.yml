@@ -48,6 +48,11 @@ services:
       - type: bind
         source: ./public
         target: /var/www/html
+    healthcheck:
+      test: curl --fail http://localhost || exit 1
+      interval: 30s
+      retries: 10
+
   wordpress2:
     depends_on:
       db:
@@ -66,6 +71,11 @@ services:
       - type: volume
         source: wp2
         target: /var/www/html
+    healthcheck:
+      test: curl --fail http://localhost || exit 1
+      interval: 30s
+      retries: 10
+
   reverse-proxy:
     image: nginx:latest
     ports:
