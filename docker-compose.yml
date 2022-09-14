@@ -68,4 +68,6 @@ services:
         target: /var/www/html
   reverse-proxy:
     image: nginx:latest
+    ports:
+      - "80:80"
 
