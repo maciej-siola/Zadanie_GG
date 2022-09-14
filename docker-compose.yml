@@ -71,4 +71,8 @@ services:
     ports:
       - "80:80"
     restart: always
+    volumes:
+      - type: bind
+        source: proxy.conf
+        target: /etc/nginx/conf.d/proxy.conf
 
