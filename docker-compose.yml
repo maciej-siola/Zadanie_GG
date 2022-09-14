@@ -101,6 +101,10 @@ services:
       WORDPRESS_DB_USER: wordpressuser
       WORDPRESS_DB_PASSWORD: wordpresspassword
       WORDPRESS_TABLE_PREFIX: wp1_
+    volumes:
+      - type: bind
+        source: ./public
+        target: /var/www/html
   wordpress2-cli:
     depends_on:
       wordpress2:
